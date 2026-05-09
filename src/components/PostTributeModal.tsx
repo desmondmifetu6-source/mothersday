@@ -36,7 +36,9 @@ export default function PostTributeModal({
   };
 
   const handlePost = () => {
-    if (!name || !quote || !image) return;
+    if (!name) return alert("Please enter her name!");
+    if (!quote) return alert("Please write a beautiful message!");
+    if (!image) return alert("Please upload her photo!");
     
     const newTribute: TributeType = {
       id: Date.now(),
@@ -56,7 +58,7 @@ export default function PostTributeModal({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center">
+      <div className="fixed inset-0 z-[400] flex items-end sm:items-center justify-center">
         {/* Backdrop */}
         <motion.div 
           initial={{ opacity: 0 }} 
@@ -94,12 +96,9 @@ export default function PostTributeModal({
             {/* Image Upload Area */}
             <div className="space-y-3">
               <label className="block text-sm font-bold uppercase tracking-wider text-text-light/60">Step 1: Choose a Photo</label>
-              <motion.div 
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => fileInputRef.current?.click()}
-                className={`w-full aspect-[4/3] rounded-[2rem] border-4 border-dashed transition-all cursor-pointer flex flex-col items-center justify-center relative overflow-hidden group ${
-                  image ? "border-primary" : "border-gray-100 bg-gray-50 hover:bg-gray-100/50 hover:border-primary/30"
+              <div 
+                className={`w-full aspect-[4/3] rounded-[2rem] border-4 border-dashed transition-all relative overflow-hidden group ${
+                  image ? "border-primary shadow-2xl" : "border-gray-100 bg-gray-50 hover:bg-gray-100/50 hover:border-primary/30"
                 }`}
               >
                 {image ? (
@@ -110,27 +109,29 @@ export default function PostTributeModal({
                     </div>
                   </>
                 ) : (
-                  <div className="text-center px-6">
-                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <div className="text-center px-6 pointer-events-none mt-16">
+                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <ImageIcon className="w-10 h-10 text-primary" />
                     </div>
                     <p className="text-lg font-bold text-text mb-1">Pick her best photo</p>
                     <p className="text-sm text-text-light font-medium">From your gallery or camera roll</p>
                   </div>
                 )}
-                {isUploading && (
-                  <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center">
-                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-                  </div>
-                )}
+
+                {/* Bulletproof File Input: Covers the entire box and is invisible */}
                 <input 
                   type="file" 
                   accept="image/*" 
-                  ref={fileInputRef} 
-                  className="hidden" 
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20" 
                   onChange={handleFileChange}
                 />
-              </motion.div>
+
+                {isUploading && (
+                  <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-30">
+                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Form Fields */}
@@ -163,11 +164,10 @@ export default function PostTributeModal({
           <div className="p-8 pt-4">
             <button 
               onClick={handlePost}
-              disabled={!name || !quote || !image}
               className={`w-full py-5 rounded-[1.5rem] font-black text-xl shadow-2xl transition-all flex items-center justify-center gap-3 transform active:scale-95 ${
                 name && quote && image 
                 ? "bg-text text-white hover:bg-black hover:shadow-primary/30" 
-                : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-gray-100 text-gray-400"
               }`}
             >
               <Upload className="w-6 h-6" />
