@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { useModals } from "@/context/ModalContext";
 
 export default function Hero() {
