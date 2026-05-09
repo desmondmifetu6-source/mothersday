@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion";
 
+import { useModals } from "@/context/ModalContext";
+
 export default function CTASection() {
+  const { setIsPostModalOpen } = useModals();
+
   return (
     <section className="py-24 bg-gradient-to-br from-background via-white to-primary/10 relative overflow-hidden">
       {/* Floating particles background effect */}
@@ -44,7 +48,10 @@ export default function CTASection() {
           <p className="text-xl text-text-light mb-10 max-w-2xl mx-auto">
             Create a tribute she will never forget. Join thousands of others honoring the women who raised them.
           </p>
-          <button className="bg-gradient-to-r from-primary to-secondary text-white px-10 py-5 rounded-full font-semibold text-lg shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/50 transition-all transform hover:-translate-y-1">
+          <button 
+            onClick={() => setIsPostModalOpen(true)}
+            className="bg-gradient-to-r from-primary to-secondary text-white px-10 py-5 rounded-full font-semibold text-lg shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/50 transition-all transform hover:-translate-y-1"
+          >
             Create Tribute
           </button>
         </motion.div>

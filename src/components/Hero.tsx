@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
-import TributeReels from "./TributeReels";
+import { useModals } from "@/context/ModalContext";
 
 export default function Hero() {
-  const [isReelsOpen, setIsReelsOpen] = useState(false);
+  const { setIsReelsOpen, setIsPostModalOpen } = useModals();
 
   return (
     <>
@@ -33,7 +31,10 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all transform hover:-translate-y-1">
+              <button 
+                onClick={() => setIsPostModalOpen(true)}
+                className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-all transform hover:-translate-y-1"
+              >
                 Post a Tribute
               </button>
               <button 
@@ -83,7 +84,6 @@ export default function Hero() {
 
         </div>
       </div>
-      <TributeReels isOpen={isReelsOpen} onClose={() => setIsReelsOpen(false)} />
     </section>
     </>
   );

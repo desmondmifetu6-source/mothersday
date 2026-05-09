@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useModals } from "@/context/ModalContext";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { setIsPostModalOpen } = useModals();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +40,10 @@ export default function Navbar() {
             <Link href="/" className="text-text-light hover:text-primary transition-colors font-medium">Home</Link>
             <Link href="#tributes" className="text-text-light hover:text-primary transition-colors font-medium">Tributes</Link>
             <Link href="#about" className="text-text-light hover:text-primary transition-colors font-medium">About</Link>
-            <button className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-full font-medium shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5">
+            <button 
+              onClick={() => setIsPostModalOpen(true)}
+              className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2.5 rounded-full font-medium shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all transform hover:-translate-y-0.5"
+            >
               Post Your Mom
             </button>
           </div>

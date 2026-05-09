@@ -27,7 +27,11 @@ const placeholderTributes = [
   }
 ];
 
+import { useModals } from "@/context/ModalContext";
+
 export default function FeaturedTributes() {
+  const { setIsReelsOpen } = useModals();
+
   return (
     <section id="tributes" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +59,10 @@ export default function FeaturedTributes() {
         </div>
         
         <div className="mt-16 text-center">
-          <button className="text-primary font-medium hover:text-secondary transition-colors inline-flex items-center gap-2">
+          <button 
+            onClick={() => setIsReelsOpen(true)}
+            className="text-primary font-medium hover:text-secondary transition-colors inline-flex items-center gap-2"
+          >
             View All Tributes
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </button>
