@@ -18,7 +18,7 @@ const initialTributes: TributeType[] = [
     id: 1, 
     image: "/moms/mom-1.jpeg", 
     name: "Desmond", 
-    quote: "To the world you are a mother, but to our family you are the absolute world. Thank you for being my strength.", 
+    quote: "A mother is she who can take the place of all others but whose place no one else can take.", 
     initialLikes: 2450, 
     initialComments: [{ name: "Grace", text: "This is so beautiful!" }, { name: "Samuel", text: "Happy Mother's Day!" }] 
   },
@@ -26,7 +26,7 @@ const initialTributes: TributeType[] = [
     id: 2, 
     image: "/moms/mom-2.jpeg", 
     name: "Desmond", 
-    quote: "Everything I am, or ever hope to be, I owe to my angel mother. Your love is my guiding light.", 
+    quote: "There is no role in life more essential and more eternal than that of a mother’s unconditional love.", 
     initialLikes: 1820, 
     initialComments: [{ name: "Linda", text: "What a stunning photo." }] 
   },
@@ -34,7 +34,7 @@ const initialTributes: TributeType[] = [
     id: 3, 
     image: "/moms/mom-3.jpeg", 
     name: "Desmond", 
-    quote: "A mother's love is the fuel that enables a normal human being to do the impossible. I love you, Mom.", 
+    quote: "The heart of a mother is a deep abyss at the bottom of which you will always find forgiveness and grace.", 
     initialLikes: 3100, 
     initialComments: [] 
   },

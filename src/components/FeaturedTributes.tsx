@@ -14,14 +14,14 @@ const placeholderTributes = [
   {
     id: 2,
     name: "To My Beautiful Mom",
-    quote: "Everything I am, or ever hope to be, I owe to my angel mother. Your love is my guiding light.",
+    quote: "There is no role in life more essential and more eternal than that of a mother’s unconditional love.",
     author: "Desmond Mifetu",
     image: "/moms/mom-2.jpeg"
   },
   {
     id: 3,
     name: "To My Beautiful Mom",
-    quote: "To the world you are a mother, but to our family you are the absolute world. I love you endlessly.",
+    quote: "The heart of a mother is a deep abyss at the bottom of which you will always find forgiveness and grace.",
     author: "Desmond Mifetu",
     image: "/moms/mom-3.jpeg"
   }
