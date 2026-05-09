@@ -21,26 +21,7 @@ export const metadata: Metadata = {
 };
 
 import FallingFlowers from "@/components/FallingFlowers";
-import { ModalProvider, useModals } from "@/context/ModalContext";
-import TributeReels from "@/components/TributeReels";
-import PostTributeModal from "@/components/PostTributeModal";
-
-function GlobalModals() {
-  const { isReelsOpen, setIsReelsOpen, isPostModalOpen, setIsPostModalOpen, tributes, addTribute } = useModals();
-  
-  return (
-    <>
-      <TributeReels isOpen={isReelsOpen} onClose={() => setIsReelsOpen(false)} tributes={tributes} />
-      {isPostModalOpen && (
-        <PostTributeModal 
-          isOpen={isPostModalOpen} 
-          onClose={() => setIsPostModalOpen(false)} 
-          onPost={addTribute} 
-        />
-      )}
-    </>
-  );
-}
+import { ModalProvider } from "@/context/ModalContext";
 
 export default function RootLayout({
   children,
@@ -57,7 +38,6 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />
-          <GlobalModals />
         </ModalProvider>
       </body>
     </html>

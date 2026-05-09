@@ -19,8 +19,43 @@
   }
 }
 
+@layer utilities {
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 5s ease infinite;
+  }
+
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 .gradient-text {
-  background: linear-gradient(135deg, #ff8fa3, #c9184a);
+  background: linear-gradient(135deg, #ff8fa3, #c9184a, #ffb3c1);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
 }
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+::selection {
+  background: #ff8fa3;
+  color: white;
+}
+
